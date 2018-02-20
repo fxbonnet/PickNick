@@ -1,7 +1,16 @@
 import java.util.Date
 
 /**
-  * Created by Nick on 19/2/18.
+  * Companion factory for Block
+  */
+object Block {
+  def createBlock(previousHash: String, data: String): Block = {
+    new Block(previousHash: String, data: String)
+  }
+}
+
+/**
+  * Block represents a unit for blockchain. Has private default constructor and parametrized public constructor.
   */
 class Block private() {
   var timestamp: Long = 0
@@ -9,7 +18,7 @@ class Block private() {
   var data: String = ""
   var hash: String = ""
 
-  def this(previousHash: String, data: String) {
+  private def this(previousHash: String, data: String) {
     this()
     this.timestamp = new Date().getTime
     this.data = data
@@ -17,6 +26,10 @@ class Block private() {
     this.hash = calculateHash
   }
 
+  /**
+    * Calculates hash of block by applying SHA256 hash function on sum of previous hash with timestamp and data
+    * @return
+    */
   def calculateHash: String = {
     Crypto.applySHA256(this.previousHash + this.timestamp.toString + this.data)
   }

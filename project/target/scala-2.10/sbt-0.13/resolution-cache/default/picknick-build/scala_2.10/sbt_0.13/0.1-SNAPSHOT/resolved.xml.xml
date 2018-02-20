@@ -4,7 +4,7 @@
 		module="picknick-build"
 		revision="0.1-SNAPSHOT"
 		status="integration"
-		publication="20180220093108"
+		publication="20180220130746"
 		e:sbtVersion="0.13" e:scalaVersion="2.10"
 	>
 		<description>
