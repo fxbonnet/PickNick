@@ -28,10 +28,9 @@ class Block private() {
 
   /**
     * Calculates hash of block by applying SHA256 hash function on sum of previous hash with timestamp and data
-    * @return
     */
   def calculateHash: String = {
-    Crypto.applySHA256(this.previousHash + this.timestamp.toString + this.data)
+    Crypto.hash(this.previousHash + this.timestamp.toString + this.data)
   }
 
   override def toString: String = {
